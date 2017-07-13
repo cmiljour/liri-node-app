@@ -2,7 +2,7 @@
   "name": "liri-node-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "liri.js",
   "dependencies": {
     "node-spotify-api": "^1.0.5",
     "request": "^2.81.0",
