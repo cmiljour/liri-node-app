@@ -29,13 +29,35 @@ else if (userInput1 === 'my-tweets') {
 }
 
 else if (userInput1 === 'spotify-this-song') {
+    if (!userInput2){
+        spotify.search({ type: 'track', query: 'Ace of Base'}, function(err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        console.log("Artist(s):" + ' ' + data.tracks.items[0].album.artists[0].name);
+        console.log("Song Name:" + ' ' + data.tracks.items[0].name);
+        console.log("Spotify Link:" + ' ' + data.tracks.items[0].preview_url);
+         console.log("Album:" + ' ' + data.tracks.items[0].album.name);
+    });
+    return;
+    }
+
     spotify.search({ type: 'track', query: userInput2}, function(err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        // data.tracks.items.forEach(function(element){
-        //     console.log(element.album.artists);
-        // });
-        console.log(data.tracks.items);
+        for (var i = 0; i < 6; i++) {
+            console.log("Artist(s):" + ' ' + data.tracks.items[i].artists[0].name);
+            console.log("Song Name:" + ' ' + data.tracks.items[i].name);
+            console.log("Spotify Link:" + ' ' + data.tracks.items[i].preview_url);
+            console.log("Album:" + ' ' + data.tracks.items[i].album.name);
+            console.log("\n")
+
+            
+        }
+        // console.log("Artist(s):" + ' ' + data.tracks.items[0].artists[0].name);
+        // console.log("Song Name:" + ' ' + data.tracks.items[0].name);
+        // console.log("Spotify Link:" + ' ' + data.tracks.items[0].preview_url);
+        //  console.log("Album:" + ' ' + data.tracks.items[0].album.name);
     });
 }
